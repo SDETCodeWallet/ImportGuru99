@@ -2,11 +2,14 @@ package Genirc;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -16,9 +19,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import com.gargoylesoftware.htmlunit.javascript.host.Set;
 
 import AppPages.home_Page;
 
@@ -26,7 +32,7 @@ public class Web_util_methods {
 	
 	public static WebDriver driver=null;
 	
-	
+	/* browser methods */ 
 	 public static WebDriver launchbrowser(String Browsername,String browsername){
 			
 			if(Browsername.equalsIgnoreCase("ff")){
@@ -41,34 +47,45 @@ public class Web_util_methods {
 			return driver;    
 			      
 		}
-	 /*For opening the application by using separate method 
-	   public static home_Page myApplication(String  url){
-			driver.get(url);
-			home_Page Mainpage=PageFactory.initElements(driver, home_Page.class);
-	        return Mainpage;
-	 }*/
-	 public static void clickOnWebelement(WebElement we){
-		 we.click();		 
-	    }
-	 public static void inputValue(WebElement inputelement,String userinput){
-		 inputelement.sendKeys(userinput);
-	    }
-	 public static void inputnumericvalue(WebElement inputelement,int userinput){
-		String stringvalue= Integer.toString(userinput);
-		 inputelement.sendKeys(stringvalue);
-	    }
-	 
-     public static void clickOnElement(WebElement ClickBtn){
- 		 ClickBtn.click();
-	   }
 	 public static void clearCookies(WebDriver driver) throws InterruptedException{
 			driver.manage().deleteAllCookies();
 			Thread.sleep(5000);
 		}
+	
+	 /*For opening the application by using separate method */
+	 public static home_Page myApplication(String  url){
+			driver.get(url);
+			home_Page Mainpage=PageFactory.initElements(driver, home_Page.class);
+	        return Mainpage;
+	 }
+	 
+     public static void clickOnWebelement(WebElement we){
+		 we.click();		 
+	    }
+	 
+	 /*send keys */
+	 public static void inputValue(WebElement inputelement,String userinput){
+		 inputelement.sendKeys(userinput);
+	    }
+	
+     public static void inputnumericvalue(WebElement inputelement,int userinput){
+		String stringvalue= Integer.toString(userinput);
+		 inputelement.sendKeys(stringvalue);
+	    }
+	 
+	 public static void refreshByKey(WebElement we){
+			we.sendKeys(Keys.F5);
+		}
+	 
+	 public static void clickOnElement(WebElement ClickBtn){
+ 		 ClickBtn.click();
+	   }
+	 
 	 public static void verifyTitle(String actual,String expectedtitle){
 		 Assert.assertEquals(actual, expectedtitle);
 	 }
-	 public static void getText(WebElement we){
+	
+     public static void getText(WebElement we){
 		String text=we.getText();
 		System.out.println(text);
 	}
@@ -88,14 +105,14 @@ public class Web_util_methods {
 		}
 	 }
 		
-		public static void clickonradiobutton(WebElement we){
+	 public static void clickonradiobutton(WebElement we){
 			boolean value=we.isEnabled();
 			if(value==true){
 			we.click();
 			}
 		}
 		
-		public static void tkeScrnshot(String savefileloc){
+	 public static void tkeScrnshot(String savefileloc){
 			File sht= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 			File path=new File(savefileloc+".png");
 			try{
@@ -105,42 +122,96 @@ public class Web_util_methods {
 			}
 		}
 		
-		public static String txtAlert(){
+	 /* Alert Methods */
+	 public static String txtAlert(){
 			Alert txt=driver.switchTo().alert();
 			String txtvalue=txt.getText();
 		    return txtvalue;
 		}
 		
-		public static void acceptAlert(){
+	 public static void acceptAlert(){
 			Alert actlrt=driver.switchTo().alert();
 			actlrt.accept();
 		}
 	  
-		public static void dsmssAlert(){
+	 public static void dsmssAlert(){
 			Alert dsmmss=driver.switchTo().alert();
 		   dsmmss.dismiss();
 		}
    
-		public static void alertInput(String inputvalue){
+	 public static void alertInput(String inputvalue){
 			Alert input=driver.switchTo().alert();
 		    input.sendKeys(inputvalue);
 		}
 		
-		public static void explictWait(int timedur,By locator) throws InterruptedException{
+	 /* Wait Methods */
+	 public static void explictWait(int timedur,By locator) throws InterruptedException{
 		    WebDriverWait wait=new WebDriverWait(driver, timedur);
 		    wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+		   
 			
 		}
-		public static void switchFrameId(int i){
-			driver.switchTo().frame(i);
+		
+	 public static void threadSlp(int timedur) throws InterruptedException{
+			Thread.sleep(timedur);
 		}
-		public static void switchFrameString(String St1){
-			driver.switchTo().frame(St1);
+		
+	 public static void implWait(int i){
+			driver.manage().timeouts().implicitlyWait(i, TimeUnit.SECONDS);
 		}
-		public static void switchFrameString(WebElement we){
-			driver.switchTo().frame(we);
+		
+	/* frame methods */
+     public static void switchFrameId(int i){
+			try{driver.switchTo().frame(i);
+			}catch(Exception IO){
+				System.out.println(IO);
+			}
 		}
-	
+	 
+     public static void switchFrameString(String St1){
+			try{driver.switchTo().frame(St1);
+			}catch(Exception IO){
+				System.out.println(IO);
+			}
+			}
+		
+     public static void switchFrameString(WebElement we){
+			try{driver.switchTo().frame(we);
+			
+			}catch (Exception IO){
+				System.out.println(IO);
+			}
+		}
+		
+	 public static void windowHandle(){
+			
+		  java.util.Set<String> wind=driver.getWindowHandles();
+		  
+		  int value=wind.size();
+		  
+		  Iterator<String> win=wind.iterator();
+		 String winvalue= win.next();
+		 driver.switchTo().window(winvalue);
+		  win.hasNext();
+			
+		}
+		
+	/* navigation methods */
+	 public static void refreshPage(){
+			driver.navigate().refresh();
+		}
+		
+	 public static void navigateUrl(String St1){
+			driver.navigate().to(St1);
+		}
+		
+	 public static void navigateForward(){
+			driver.navigate().forward();
+		}
+		
+	 public static void navigateBack(){
+			driver.navigate().back();
+		}
 }
 
 	

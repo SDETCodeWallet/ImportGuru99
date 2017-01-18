@@ -17,6 +17,7 @@ public class NewCustomer extends home_Page{
 	public  void TC2() throws InterruptedException{
 		WebDriver driver=launchbrowser("ff","http://demo.guru99.com/V4/index.php");
 		home_Page Launchapp= PageFactory.initElements(driver, home_Page.class);
+	
 		
 	}
 

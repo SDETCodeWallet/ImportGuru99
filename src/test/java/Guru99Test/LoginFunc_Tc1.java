@@ -1,5 +1,7 @@
 package Guru99Test;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
@@ -10,6 +12,7 @@ import org.testng.annotations.Test;
 
 import AppPages.DashBoard_Page;
 import AppPages.home_Page;
+import Genirc.Excelgenric;
 
 
 public class LoginFunc_Tc1 extends home_Page {
@@ -17,7 +20,10 @@ public class LoginFunc_Tc1 extends home_Page {
 
 	
 @BeforeMethod
-  public static void openApplication() throws InterruptedException{
+  public static void openApplication() throws InterruptedException, IOException{
+	
+	
+	
 	WebDriver driver=launchbrowser("ff","http://demo.guru99.com/V4/index.php");
 	home_Page Launchapp= PageFactory.initElements(driver, home_Page.class);
 	

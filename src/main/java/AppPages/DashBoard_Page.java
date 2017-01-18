@@ -19,7 +19,7 @@ public class DashBoard_Page extends Web_util_methods{
 	
 	
 	@FindBy(xpath="//ul[@class='menusubnav']//a[text()='Manager']")
-	private static WebElement username;
+	private static  WebElement username;
 	@FindBy(xpath="//ul[@class='menusubnav']//a[text()='New Customer']")
 	private static WebElement Newcustomer;
 	@FindBy(xpath="//ul[@class='menusubnav']//a[text()='Edit Customer']")
