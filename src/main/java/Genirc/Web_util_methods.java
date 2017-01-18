@@ -131,6 +131,15 @@ public class Web_util_methods {
 		    wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 			
 		}
+		public static void switchFrameId(int i){
+			driver.switchTo().frame(i);
+		}
+		public static void switchFrameString(String St1){
+			driver.switchTo().frame(St1);
+		}
+		public static void switchFrameString(WebElement we){
+			driver.switchTo().frame(we);
+		}
 	
 }
 

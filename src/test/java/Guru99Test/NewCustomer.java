@@ -28,7 +28,7 @@ public class NewCustomer extends home_Page{
 		String titile=driver.getTitle();
 		String actualtitle="Guru99 Bank Manager HomePage";
 		verifyTitle(titile,actualtitle );
-	
+		
 		AppPages.NewCustomer customer=dsh.NewCustomer();
 		Thread.sleep(3000);
 		customer.createnewuser("scriptusername", "07/06/1992", "saksoft pvtltd", "gatuambhudhnagar", "uttarpradesh", 201305, "4654655464", "deepaksa@360logica.com", "deepaksa360");
