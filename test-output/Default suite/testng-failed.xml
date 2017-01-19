@@ -6,6 +6,7 @@
       <class name="Guru99Test.LoginFunc_Tc1">
         <methods>
           <include name="openApplication"/>
+          <include name="tc2"/>
         </methods>
       </class> <!-- Guru99Test.LoginFunc_Tc1 -->
     </classes>

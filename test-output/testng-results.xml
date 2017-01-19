@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="1081" started-at="2017-01-18T12:01:37Z" finished-at="2017-01-18T12:01:38Z">
+  <suite name="Default suite" duration-ms="101" started-at="2017-01-19T09:51:58Z" finished-at="2017-01-19T09:51:59Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="1081" started-at="2017-01-18T12:01:37Z" finished-at="2017-01-18T12:01:38Z">
+    <test name="Default test" duration-ms="101" started-at="2017-01-19T09:51:58Z" finished-at="2017-01-19T09:51:59Z">
       <class name="Guru99Test.LoginFunc_Tc1">
-        <test-method status="PASS" signature="openApplication()[pri:0, instance:Guru99Test.LoginFunc_Tc1@27efef64]" name="openApplication" is-config="true" duration-ms="1007" started-at="2017-01-18T17:31:37Z" finished-at="2017-01-18T17:31:38Z">
+        <test-method status="PASS" signature="openApplication()[pri:0, instance:Guru99Test.LoginFunc_Tc1@6d4b1c02]" name="openApplication" is-config="true" duration-ms="62" started-at="2017-01-19T15:21:58Z" finished-at="2017-01-19T15:21:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- openApplication -->
-        <test-method status="PASS" signature="tc2()[pri:0, instance:Guru99Test.LoginFunc_Tc1@27efef64]" name="tc2" duration-ms="6" started-at="2017-01-18T17:31:38Z" finished-at="2017-01-18T17:31:38Z">
+        <test-method status="PASS" signature="tc2()[pri:0, instance:Guru99Test.LoginFunc_Tc1@6d4b1c02]" name="tc2" duration-ms="6" started-at="2017-01-19T15:21:59Z" finished-at="2017-01-19T15:21:59Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tc2 -->
