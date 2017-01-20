@@ -11,11 +11,14 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,7 +27,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import com.gargoylesoftware.htmlunit.javascript.host.Set;
+
 
 import AppPages.home_Page;
 
@@ -32,21 +35,46 @@ public class Web_util_methods {
 	
 	public static WebDriver driver=null;
 	
+	
+	
+	
+	
+	
+	
+	
+	
 	/* browser methods */ 
 	 public static WebDriver launchbrowser(String Browsername,String browsername){
-			
 			if(Browsername.equalsIgnoreCase("ff")){
 			    System.setProperty("webdriver.gecko.driver", "C:\\Users\\Deepak\\workspace\\Training_PoaDevEnv\\Software\\geckodriver.exe");
 			    driver=new FirefoxDriver();
-			}else if(Browsername.equalsIgnoreCase("ch")){
-				System.setProperty("", "");
+			}else if (Browsername.equalsIgnoreCase("ch")){
+				System.setProperty("webdriver.chrome.driver", "E:\\Softwares\\drivers\\chromedriver.exe");
 				driver=new ChromeDriver();
 			
+			}else if(Browsername.equalsIgnoreCase("iee")){
+				System.out.println("inside method");
+				System.setProperty("webdriver.ie.driver", "E:\\Softwares\\drivers\\ie\\IEDriverServer.exe");
+				driver=new InternetExplorerDriver();
 			}
+			
 			driver.get(browsername);
 			return driver;    
 			      
 		}
+	 
+	 public static WebDriver launchbrowserforgrid(String Gridbrowsername,Platform pl,String browsername){
+			
+			 System.setProperty("webdriver.gecko.driver", "C:\\Users\\Deepak\\workspace\\Training_PoaDevEnv\\Software\\geckodriver.exe");
+		
+			 DesiredCapabilities cap= DesiredCapabilities.firefox();
+				cap.setBrowserName(Gridbrowsername);
+				 cap.setPlatform(pl);
+				 driver=new FirefoxDriver(cap);
+				driver.get(browsername);
+				return driver;    
+				      
+			}
 	 public static void clearCookies(WebDriver driver) throws InterruptedException{
 			driver.manage().deleteAllCookies();
 			Thread.sleep(5000);
