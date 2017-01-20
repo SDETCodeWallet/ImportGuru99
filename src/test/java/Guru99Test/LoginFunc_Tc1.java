@@ -30,25 +30,14 @@ public WebDriver driver;
 public String URl ,node;
 protected  ThreadLocal<RemoteWebDriver> threaddriver=null;
 
-@Parameters("browser")
-@BeforeTest
+
+@Test
   public static void openApplication() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException{
 	
 //	Genirc.Excelgenric.writeCodeToexcel("C:\\Users\\Deepak\\Desktop\\Excels\\Selenium1.xlsx",0,6,10, "my name isgdfgdfgdfgdfgdfg shhubham Goyal");
+
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	WebDriver driver=launchbrowser("iee","http://demo.guru99.com/V4/index.php");
+	WebDriver driver=launchbrowser("ch","http://demo.guru99.com/V4/index.php");
 	home_Page Launchapp= PageFactory.initElements(driver, home_Page.class);
 	
 	DashBoard_Page dsh=LoginFunc_Tc1.Loginuser("mngr58268","Ehyveme");;

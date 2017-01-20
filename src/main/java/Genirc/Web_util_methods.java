@@ -46,15 +46,15 @@ public class Web_util_methods {
 	/* browser methods */ 
 	 public static WebDriver launchbrowser(String Browsername,String browsername){
 			if(Browsername.equalsIgnoreCase("ff")){
-			    System.setProperty("webdriver.gecko.driver", "C:\\Users\\Deepak\\workspace\\Training_PoaDevEnv\\Software\\geckodriver.exe");
+			    System.setProperty("webdriver.gecko.driver", "drivers/geckodriver.exe");
 			    driver=new FirefoxDriver();
 			}else if (Browsername.equalsIgnoreCase("ch")){
-				System.setProperty("webdriver.chrome.driver", "E:\\Softwares\\drivers\\chromedriver.exe");
+				System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 				driver=new ChromeDriver();
 			
 			}else if(Browsername.equalsIgnoreCase("iee")){
 				System.out.println("inside method");
-				System.setProperty("webdriver.ie.driver", "E:\\Softwares\\drivers\\ie\\IEDriverServer.exe");
+				System.setProperty("webdriver.ie.driver", "drivers/IEDriverServer.exe");
 				driver=new InternetExplorerDriver();
 			}
 			
