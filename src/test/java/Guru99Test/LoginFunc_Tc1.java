@@ -37,25 +37,19 @@ protected  ThreadLocal<RemoteWebDriver> threaddriver=null;
 @Test
   public static void openApplication() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException{
 	
-
-	WebDriver driver=launchbrowser("ch","https://www.naukri.com/");
-	windowHandle("RBS", "html/body/a/img");
-	driver.findElement(By.xpath(".//*[@id='p0widget']/div/div[1]/div/input")).click();
-	driver.findElement(By.xpath(".//*[@id='flowBifurcation']/div[2]/form/div[1]/div/button")).click();
-	
-//	WebDriver driver=launchbrowser("iee","http://demo.guru99.com/V4/index.php");
-//	home_Page Launchapp= PageFactory.initElements(driver, home_Page.class);
-//	
-//	DashBoard_Page dsh=LoginFunc_Tc1.Loginuser("mngr58268","Ehyveme");;
-//	Thread.sleep(5000);
-//	String titile=driver.getTitle();
-//	String actualtitle="Guru99 Bank Manager HomePage";
-//	verifyTitle(titile,actualtitle );
-//	Thread.sleep(3000);
-//	 dsh.checkLinks();
-//	 acceptAlert();
-//	 Thread.sleep(3000);
-//	 System.out.println(txtAlert());
+	WebDriver driver=launchbrowser("iee","http://demo.guru99.com/V4/index.php");
+	home_Page Launchapp= PageFactory.initElements(driver, home_Page.class);
+	              
+	DashBoard_Page dsh=LoginFunc_Tc1.Loginuser("mngr58268","Ehyveme");;
+	Thread.sleep(5000);
+	String titile=driver.getTitle();
+	String actualtitle="Guru99 Bank Manager HomePage";
+	verifyTitle(titile,actualtitle );
+	Thread.sleep(3000);
+	 dsh.checkLinks();
+	 acceptAlert();
+	 Thread.sleep(3000);
+	 System.out.println(txtAlert());
 	 
 	
 }
