@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -16,6 +17,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -35,14 +37,6 @@ public class Web_util_methods {
 	
 	public static WebDriver driver=null;
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	/* browser methods */ 
 	 public static WebDriver launchbrowser(String Browsername,String browsername){
 			if(Browsername.equalsIgnoreCase("ff")){
@@ -52,11 +46,16 @@ public class Web_util_methods {
 				System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 				driver=new ChromeDriver();
 			
-			}else if(Browsername.equalsIgnoreCase("iee")){
+			}else if(Browsername.equalsIgnoreCase("IE")){
 				System.out.println("inside method");
 				System.setProperty("webdriver.ie.driver", "drivers/IEDriverServer.exe");
 				driver=new InternetExplorerDriver();
+			}else if(Browsername.equalsIgnoreCase("IEE")){
+				System.out.println("inside method");
+				System.setProperty("webdriver.edge.driver", "drivers/MicrosoftWebDriver.exe");
+				driver=new EdgeDriver();
 			}
+			
 			
 			driver.get(browsername);
 			return driver;    
@@ -211,16 +210,25 @@ public class Web_util_methods {
 			}
 		}
 		
-	 public static void windowHandle(){
+	 public static void windowHandle(String expectedtitle,String xpath){
 			
-		  java.util.Set<String> wind=driver.getWindowHandles();
-		  
-		  int value=wind.size();
-		  
-		  Iterator<String> win=wind.iterator();
-		 String winvalue= win.next();
-		 driver.switchTo().window(winvalue);
-		  win.hasNext();
+		 
+			String mainwin=driver.getWindowHandle();
+			Set<String> hndles=driver.getWindowHandles();
+			Iterator<String> itr=hndles.iterator();
+			while(itr.hasNext()==true){
+				String win=itr.next();
+			    driver.switchTo().window(win);
+				String title=driver.getTitle();
+				
+				if(title.equalsIgnoreCase(expectedtitle)){
+				  driver.switchTo().window(win);
+				  driver.findElement(By.xpath(xpath)).click();;
+				 
+				  }
+				
+				driver.switchTo().window(mainwin);
+			}
 			
 		}
 		

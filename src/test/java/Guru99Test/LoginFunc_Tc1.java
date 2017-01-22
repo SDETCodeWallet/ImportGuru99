@@ -4,10 +4,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -34,21 +37,26 @@ protected  ThreadLocal<RemoteWebDriver> threaddriver=null;
 @Test
   public static void openApplication() throws InterruptedException, IOException, EncryptedDocumentException, InvalidFormatException{
 	
-//	Genirc.Excelgenric.writeCodeToexcel("C:\\Users\\Deepak\\Desktop\\Excels\\Selenium1.xlsx",0,6,10, "my name isgdfgdfgdfgdfgdfg shhubham Goyal");
 
+	WebDriver driver=launchbrowser("ch","https://www.naukri.com/");
+	windowHandle("RBS", "html/body/a/img");
+	driver.findElement(By.xpath(".//*[@id='p0widget']/div/div[1]/div/input")).click();
+	driver.findElement(By.xpath(".//*[@id='flowBifurcation']/div[2]/form/div[1]/div/button")).click();
 	
-	WebDriver driver=launchbrowser("ch","http://demo.guru99.com/V4/index.php");
-	home_Page Launchapp= PageFactory.initElements(driver, home_Page.class);
-	
-	DashBoard_Page dsh=LoginFunc_Tc1.Loginuser("mngr58268","Ehyveme");;
-	Thread.sleep(5000);
-	String titile=driver.getTitle();
-	String actualtitle="Guru99 Bank Manager HomePage";
-	verifyTitle(titile,actualtitle );
-	Thread.sleep(3000);
-	 dsh.checkLinks();
-	 Thread.sleep(3000);
-	 System.out.println(txtAlert());
+//	WebDriver driver=launchbrowser("iee","http://demo.guru99.com/V4/index.php");
+//	home_Page Launchapp= PageFactory.initElements(driver, home_Page.class);
+//	
+//	DashBoard_Page dsh=LoginFunc_Tc1.Loginuser("mngr58268","Ehyveme");;
+//	Thread.sleep(5000);
+//	String titile=driver.getTitle();
+//	String actualtitle="Guru99 Bank Manager HomePage";
+//	verifyTitle(titile,actualtitle );
+//	Thread.sleep(3000);
+//	 dsh.checkLinks();
+//	 acceptAlert();
+//	 Thread.sleep(3000);
+//	 System.out.println(txtAlert());
+	 
 	
 }
 
